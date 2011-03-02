@@ -12,7 +12,7 @@ class EventsController < ApplicationController
         'Body' => "Total: #{user.events.where(:thing_id => event.thing).sum(:number)}"
       }
 
-      path = "/2010-04-01/Accounts/#{ENV['TWILIO_ID']}/Sms"
+      path = "/2010-04-01/Accounts/#{ENV['TWILIO_ID']}/SMS/Messages"
       Rails.logger.warn "PATH: #{path}"
       resp = twilio.request(path, 'POST', d)
 
