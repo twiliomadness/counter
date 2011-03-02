@@ -1,0 +1,12 @@
+*~
+.DS_Store
+.bundle
+capybara-*.html
+config/database.yml
+config/credentials.rb
+db/*.db
+db/*.sql
+log/*.log
+rerun.txt
+tmp/**/*
+config/credentials.yml
