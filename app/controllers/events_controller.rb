@@ -12,7 +12,7 @@ class EventsController < ApplicationController
         'Body' => "Total: #{user.events.where(:thing_id => event.thing).sum(:number)}"
       }
 
-      resp = account.request("/2010-04-01/Accounts/#{ENV['TWILIO_ID']}/Sms",
+      resp = twilio.request("/2010-04-01/Accounts/#{ENV['TWILIO_ID']}/Sms",
                              'POST', d)
 
       resp.error! unless resp.kind_of? Net::HTTPSuccess
