@@ -12,8 +12,9 @@ class EventsController < ApplicationController
         'Body' => "Total: #{user.events.where(:thing_id => event.thing).sum(:number)}"
       }
 
-      resp = twilio.request("/2010-04-01/Accounts/#{ENV['TWILIO_ID']}/Sms",
-                             'POST', d)
+      path = "/2010-04-01/Accounts/#{ENV['TWILIO_ID']}/Sms"
+      Rails.logger.warn "PATH: #{path}"
+      resp = twilio.request(path, 'POST', d)
 
       resp.error! unless resp.kind_of? Net::HTTPSuccess
       puts "code: %s\nbody: %s" % [resp.code, resp.body]
