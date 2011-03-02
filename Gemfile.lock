@@ -184,6 +184,8 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
+    twiliolib (2.0.7)
+      builder (>= 2.1.2)
     tzinfo (0.3.24)
     warden (1.0.3)
       rack (>= 1.0.0)
@@ -217,4 +219,5 @@ DEPENDENCIES
   ruby_parser
   spork
   taps
+  twiliolib
   wirble
