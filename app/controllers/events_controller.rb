@@ -12,9 +12,9 @@ class EventsController < ApplicationController
 private
 
   def list_from_twilio
-    events = @user.events
+    events = @user.events.group_by(&:thing_id)
     ret = {}
-    res.each_pair{|k,v| ret[Thing.find(k).name] = v.map(&:number).sum}
+    events.each_pair{|k,v| ret[Thing.find(k).name] = v.map(&:number).sum}
     text = ret.sort.map{|x| x.join(': ')}.join(', ')
 
     send_text params[:From], text
