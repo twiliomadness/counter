@@ -9,7 +9,7 @@ class EventsController < ApplicationController
       d = {
         'From' => '6082475032',
         'To' => params[:From],
-        'Body' => "Total: #{user.events.where(:thing => event.thing).sum(:number)}"
+        'Body' => "Total: #{user.events.where(:thing_id => event.thing).sum(:number)}"
       }
 
       resp = account.request("/2010-04-01/Accounts/#{ENV['TWILIO_ID']}/Sms",
