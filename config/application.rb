@@ -5,7 +5,8 @@ require 'rails/all'
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
-load(File.expand_path('../credentials.rb', __FILE__))
+
+load(File.expand_path('../credentials.rb', __FILE__)) unless Rails.env.production?
 
 module Counter
   class Application < Rails::Application
