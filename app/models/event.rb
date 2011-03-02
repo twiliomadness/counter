@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :thing
+  belongs_to :user, :autosave => true
+  belongs_to :thing, :autosave => true
 
   def self.create_from_twilio params
     body = params[:Body]
