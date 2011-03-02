@@ -11,6 +11,7 @@ class Event < ActiveRecord::Base
     event.thing = Thing.find_or_initialize_by_name(split_body[1..-1].join(' '))
     event.user = User.find_or_initialize_by_phone_number(params[:From])
     event.save!
+    event
   end
 
 end
