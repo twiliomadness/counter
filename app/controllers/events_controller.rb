@@ -7,6 +7,7 @@ class EventsController < ApplicationController
     else
       create_from_twilio
     end
+    head 200
   end
 
 private
@@ -23,9 +24,9 @@ private
   def create_from_twilio
     if event = Event.create_from_twilio(params)
 
+      # oops... @user not set if it's a brand-new user
       text = "Total: #{@user.events.where(:thing_id => event.thing).sum(:number)}"
       send_text params[:From], text
-      head 200
     else
       raise 'meh!'
     end
